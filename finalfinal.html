@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IL COVO – Cigares Lounge</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:wght@400;600&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Cormorant Garamond',serif;background:#0b0a08;color:#ffffff;overflow-x:hidden}
+
+.age-verification{position:fixed;inset:0;z-index:10000;display:flex;justify-content:flex-end;align-items:center;padding:20px;background:url('file:///C:/Users/21658/Downloads/fbd381a3-5c30-449e-9851-9c18159b92c6.png') no-repeat center center/cover}
+.age-verification.hidden{display:none}
+.age-card{background:rgba(0,0,0,0.85);padding:50px 40px;border-radius:15px;max-width:450px;width:100%;margin-right:80px;box-shadow:0 20px 60px rgba(0,0,0,0.5);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1)}
+.age-question{font-size:32px;font-weight:600;margin-bottom:20px;line-height:1.3;color:#ffffff;font-family:'Playfair Display',serif}
+.age-description{font-size:16px;line-height:1.6;color:#cccccc;margin-bottom:35px;font-family:Arial,sans-serif}
+.age-buttons{display:flex;gap:15px}
+.age-btn{flex:1;padding:18px 30px;font-size:18px;font-weight:600;border:none;border-radius:8px;cursor:pointer;transition:all 0.3s ease;font-family:"Playfair Display",serif}
+.age-btn.under{background:transparent;color:white;border:2px solid rgba(255,255,255,0.6)}
+.age-btn.under:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.9);transform:translateY(-2px)}
+.age-btn.over{background:#c41e3a;color:#fff;border:2px solid #c41e3a}
+.age-btn.over:hover{background:#e02440;border-color:#e02440;transform:translateY(-2px);box-shadow:0 5px 20px rgba(196,30,58,0.5)}
+
+.main-content{display:none}
+.main-content.visible{display:block}
+.background{position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 20% 30%, rgba(255,255,255,0.12), transparent 40%),radial-gradient(circle at 80% 60%, rgba(255,255,255,0.10), transparent 45%),linear-gradient(180deg,#0b0a08,#050403);animation:bgMove 12s ease-in-out infinite alternate}
+@keyframes bgMove{0%{filter:brightness(1)}100%{filter:brightness(1.15)}}
+.smoke{position:fixed;inset:0;background:url("https://www.transparenttextures.com/patterns/foggy-birds.png");opacity:0.06;animation:smoke 40s linear infinite;z-index:-1}
+@keyframes smoke{from{background-position:0 0}to{background-position:1000px 1000px}}
+
+.navbar{position:fixed;top:0;width:100%;background:rgba(10,10,10,.9);border-bottom:1px solid rgba(255,255,255,.4);padding:1rem 2rem;z-index:1000;transition:.3s}
+.navbar.scrolled{padding:.6rem 2rem}
+.nav-container{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{display:block}
+.nav-logo img{height:50px;width:auto}
+.nav-menu{display:flex;gap:2rem;list-style:none}
+.nav-link{font-family:'Cinzel',serif;text-decoration:none;color:#ffffff}
+.nav-link:hover{color:#ffffff}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.burger span{width:25px;height:2px;background:#ffffff}
+
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding-top:6rem}
+.logo{width:100%;max-width:500px;height:auto}
+.tagline{font-family:'Playfair Display',serif;font-style:italic;margin:1.5rem 0;font-size:1.6rem;color:#ffffff}
+.divider{width:160px;height:3px;margin:2rem auto;background:linear-gradient(90deg,transparent,#ffffff,transparent)}
+.cta{display:inline-block;padding:1rem 3rem;background:linear-gradient(135deg,#ffffff,#ffffff);color:#0b0a08;text-decoration:none;font-family:'Cinzel',serif;letter-spacing:.25em;position:relative}
+.cta::after{content:"";position:absolute;inset:6px;border:1px dashed rgba(0,0,0,.4)}
+
+section{padding:6rem 2rem}
+.container{max-width:1200px;margin:auto}
+.section-title{text-align:center;font-family:'Cinzel',serif;letter-spacing:.35em;margin-bottom:3rem;color:#ffffff}
+
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:3rem}
+.card{background:linear-gradient(135deg,#1b1a17,#0e0e0e);border:3px solid #ffffff;padding:0.5rem;text-align:center;transition:.4s;cursor:pointer}
+.card:hover{transform:translateY(-12px);box-shadow:0 20px 40px rgba(255,255,255,.3)}
+.card-image{position:relative;margin-bottom:1.5rem}
+.card-image img{width:100%;height:340px;object-fit:cover;border:3px solid #ffffff}
+.card-number{position:absolute;bottom:20px;right:20px;font-size:3.5rem;color:#ffffff;font-weight:bold;font-family:'Cinzel',serif;text-shadow:2px 2px 8px rgba(0,0,0,0.8)}
+.card h3{font-family:'Cinzel',serif;text-transform:uppercase;color:#ffffff;font-size:1rem;margin-bottom:0.5rem;padding:0 1.5rem}
+.price{font-family:'Playfair Display',serif;font-size:1.4rem;color:#ffffff;margin:1rem 0;padding:0 1.5rem}
+.whatsapp{display:inline-flex;gap:.5rem;align-items:center;padding:.7rem 2rem;background:#0b0a08;color:white;text-decoration:none;font-family:'Cinzel',serif;border:2px solid #ffffff;transition:.3s;margin-bottom:0.5rem}
+.whatsapp:hover{background:#ffffff;color:#0b0a08}
+
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:3rem}
+.box{background:#11100e;padding:2rem;border:1px solid rgba(255,255,255,.4);text-align:center;color:#ffffff}
+footer{text-align:center;padding:2rem;border-top:1px solid #ffffff;color:#ffffff}
+
+@media(max-width:768px){
+    .age-verification{justify-content:center}
+    .age-card{margin-right:0;padding:40px 30px}
+    .age-question{font-size:26px}
+    .age-buttons{flex-direction:column}
+    .nav-menu{position:fixed;top:70px;left:-100%;width:100%;flex-direction:column;background:#0b0a08;padding:2rem;transition:.3s}
+    .nav-menu.active{left:0}
+    .burger{display:flex}
+    .logo{max-width:280px}
+    .card-number{font-size:2.5rem;bottom:15px;right:15px}
+}
+</style>
+</head>
+<body>
+
+<div class="age-verification" id="ageVerification">
+    <div class="age-card">
+        <h2 class="age-question">Are you of legal age?</h2>
+        <p class="age-description">
+            This website contains information about products intended for adults only. Please confirm your age before continuing.
+        </p>
+        <div class="age-buttons">
+            <button class="age-btn under" onclick="ageUnder()">Under the age of (21)</button>
+            <button class="age-btn over" onclick="ageOver()">Of legal age (21+)</button>
+        </div>
+    </div>
+</div>
+
+<div class="main-content" id="mainContent">
+
+<div class="background"></div>
+<div class="smoke"></div>
+
+<nav class="navbar">
+<div class="nav-container">
+<a class="nav-logo" href="#"><img src="file:///C:/Users/21658/Downloads/il-covo-white.png" alt="IL COVO"></a>
+<ul class="nav-menu">
+<li><a class="nav-link" href="#">Home</a></li>
+<li><a class="nav-link" href="#cigares">CIGARS</a></li>
+<li><a class="nav-link" href="#contact">CONTACT</a></li>
+</ul>
+<div class="burger"><span></span><span></span><span></span></div>
+</div>
+</nav>
+
+<section class="hero">
+<div>
+<img class="logo" src="file:///C:/Users/21658/Downloads/il-covo-white.png" alt="IL COVO">
+<div class="divider"></div>
+<p class="tagline">Exceptional Cigar Lounge</p>
+<a href="#cigares" class="cta">Explore</a>
+</div>
+</section>
+
+<section id="cigares">
+<div class="container">
+<h2 class="section-title">Our Selection of Cigars</h2>
+
+<div class="products">
+
+<div class="card" onclick="order('Bolivar Belicosos Finons')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Bolivar Belicosos Finons.png">
+<span class="card-number">01</span>
+</div>
+<h3>Bolivar Belicosos Finons</h3>
+<p class="price">285KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Bolivar Belicosos Finons')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Bolivar Royal Coronas')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Bolivar Royal Coronas.png">
+<span class="card-number">02</span>
+</div>
+<h3>Bolivar Royal Coronas</h3>
+<p class="price">209KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Bolivar Royal Coronas')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('H Upmann Half Coronas')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/H Upmann Half Coronas.png">
+<span class="card-number">03</span>
+</div>
+<h3>H Upmann Half Coronas</h3>
+<p class="price">100KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('H Upmann Half Coronas')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('H. Upmann Half Corona pack of 5')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/H. Upmann Half Corona pack of 5.png">
+<span class="card-number">04</span>
+</div>
+<h3>H. Upmann Half Corona pack of 5</h3>
+<p class="price">105KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('H. Upmann Half Corona pack of 5')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Hoyo de Monterrey Epicure No.2')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Hoyo de Monterrey Epicure No.2.png">
+<span class="card-number">05</span>
+</div>
+<h3>Hoyo de Monterrey Epicure No.2</h3>
+<p class="price">226KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Hoyo de Monterrey Epicure No.2')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Hoyo de Monterrey Le Hoyo de Rio Seco')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Hoyo de Monterrey Le Hoyo de Rio Seco.png">
+<span class="card-number">06</span>
+</div>
+<h3>Hoyo de Monterrey Le Hoyo de Rio Seco</h3>
+<p class="price">136KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Hoyo de Monterrey Le Hoyo de Rio Seco')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('HOYO DE MONTERREY MONTERREYES NO. 4 EDICIÓN LIMITADA')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/HOYO DE MONTERREY MONTERREYES NO. 4 EDICIÓN LIMITADA.png">
+<span class="card-number">07</span>
+</div>
+<h3>HOYO DE MONTERREY MONTERREYES NO. 4</h3>
+<p class="price">317KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('HOYO DE MONTERREY MONTERREYES NO. 4 EDICIÓN LIMITADA')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Hoyo de Monterrey Petit Robustos')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Hoyo de Monterrey Petit Robustos.png">
+<span class="card-number">08</span>
+</div>
+<h3>Hoyo de Monterrey Petit Robustos</h3>
+<p class="price">192KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Hoyo de Monterrey Petit Robustos')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Juan López Selección No.2')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Juan López Selección No.2.png">
+<span class="card-number">09</span>
+</div>
+<h3>Juan López Selección No.2</h3>
+<p class="price">214KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Juan López Selección No.2')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('La Flor de Cano Robusto ex. Países Bajos')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/La Flor de Cano Robusto ex. Países Bajos.png">
+<span class="card-number">10</span>
+</div>
+<h3>La Flor de Cano Robusto ex. Países Bajos</h3>
+<p class="price">149KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('La Flor de Cano Robusto ex. Países Bajos')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Montecristo Double Edmundo')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Montecristo Double Edmundo.png">
+<span class="card-number">11</span>
+</div>
+<h3>Montecristo Double Edmundo</h3>
+<p class="price">126KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Montecristo Double Edmundo')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Montecristo Especial No.2')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Montecristo Especial No.2.png">
+<span class="card-number">12</span>
+</div>
+<h3>Montecristo Especial No.2</h3>
+<p class="price">245KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Montecristo Especial No.2')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Montecristo Media Coronas')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Montecristo Media Coronas.png">
+<span class="card-number">13</span>
+</div>
+<h3>Montecristo Media Coronas</h3>
+<p class="price">133KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Montecristo Media Coronas')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Montecristo No. 1')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Montecristo No. 1.png">
+<span class="card-number">14</span>
+</div>
+<h3>Montecristo No. 1</h3>
+<p class="price">248KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Montecristo No. 1')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Montecristo No. 2')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Montecristo No. 2.png">
+<span class="card-number">15</span>
+</div>
+<h3>Montecristo No. 2</h3>
+<p class="price">327KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Montecristo No. 2')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('montecristo no. 4')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/montecristo no. 4.png">
+<span class="card-number">16</span>
+</div>
+<h3>Montecristo No. 4</h3>
+<p class="price">180KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('montecristo no. 4')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Montecristo Petit Edmundo')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Montecristo Petit Edmundo.png">
+<span class="card-number">17</span>
+</div>
+<h3>Montecristo Petit Edmundo</h3>
+<p class="price">94KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Montecristo Petit Edmundo')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Partagas Mille Fleurs')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Partagas Mille Fleurs.png">
+<span class="card-number">18</span>
+</div>
+<h3>Partagas Mille Fleurs</h3>
+<p class="price">105KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Partagas Mille Fleurs')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Partagas Serie D No.4')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Partagas Serie D No.4.png">
+<span class="card-number">19</span>
+</div>
+<h3>Partagas Serie D No.4</h3>
+<p class="price">86KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Partagas Serie D No.4')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Partagas Serie P No.2')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Partagas Serie P No.2.png">
+<span class="card-number">20</span>
+</div>
+<h3>Partagas Serie P No.2</h3>
+<p class="price">126KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Partagas Serie P No.2')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Por Larranaga Prometidos ex. Francia')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Por Larranaga Prometidos ex. Francia.png">
+<span class="card-number">21</span>
+</div>
+<h3>Por Larranaga Prometidos ex. Francia</h3>
+<p class="price">224KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Por Larranaga Prometidos ex. Francia')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Protocolo Diplomaticos ex. Rusia')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Protocolo Diplomaticos ex. Rusia.png">
+<span class="card-number">22</span>
+</div>
+<h3>Protocolo Diplomaticos ex. Rusia</h3>
+<p class="price">298KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Protocolo Diplomaticos ex. Rusia')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Romeo y Julieta Mille Fleurs')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Romeo y Julieta Mille Fleurs.png">
+<span class="card-number">23</span>
+</div>
+<h3>Romeo y Julieta Mille Fleurs</h3>
+<p class="price">105KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Romeo y Julieta Mille Fleurs')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Quai dOrsay No. 50')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Quai d'Orsay No. 50.png">
+<span class="card-number">24</span>
+</div>
+<h3>Quai d'Orsay No. 50</h3>
+<p class="price">72KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Quai dOrsay No. 50')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('R&J Romeo No. 1')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/R&J Romeo No. 1.png">
+<span class="card-number">25</span>
+</div>
+<h3>R&J Romeo No. 1</h3>
+<p class="price">165KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('R&J Romeo No. 1')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('R&J Wide Churchills')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/R&J Wide Churchills.png">
+<span class="card-number">26</span>
+</div>
+<h3>R&J Wide Churchills</h3>
+<p class="price">100KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('R&J Wide Churchills')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Rafael Gonzalez Coronas De Lonsdales')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Rafael Gonzalez Coronas De Lonsdales.png">
+<span class="card-number">27</span>
+</div>
+<h3>Rafael Gonzalez Coronas De Lonsdales</h3>
+<p class="price">72KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Rafael Gonzalez Coronas De Lonsdales')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Ramon Allones Small Club Corona')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Ramon Allones Small Club Corona.png">
+<span class="card-number">28</span>
+</div>
+<h3>Ramon Allones Small Club Corona</h3>
+<p class="price">119KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Ramon Allones Small Club Corona')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Romeo y Julieta Belicosos')">
+<div class="card-image">
+<img src="C:\Users\21658\Downloads\IMG/Romeo y Julieta Belicosos.png">
+<span class="card-number">29</span>
+</div>
+<h3>Romeo y Julieta Belicosos</h3>
+<p class="price">269KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Romeo y Julieta Belicosos')">💬 To order</a>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+<h2 class="section-title">Contact</h2>
+<div class="contact">
+<div class="box">📍 Koweït – Koweït</div>
+<div class="box">💬 WhatsApp : 0096561119777 (24/7)</div>
+</div>
+</div>
+</section>
+
+<footer>
+IL COVO © 2025 – Cigar Lounge
+</footer>
+
+</div>
+
+<script>
+function ageUnder(){window.location.href='https://google.com'}
+function ageOver(){document.getElementById('ageVerification').classList.add('hidden');document.getElementById('mainContent').classList.add('visible')}
+function order(product){const phone="0096561119777";const msg=`Hello, I would like to order : ${product}`;window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,"_blank")}
+window.addEventListener("scroll",()=>{document.querySelector(".navbar").classList.toggle("scrolled",window.scrollY>50)});
+document.querySelector(".burger").onclick=()=>{document.querySelector(".nav-menu").classList.toggle("active")};
+</script>
+
+</body>
+</html>
