@@ -66,15 +66,54 @@ section{padding:6rem 2rem}
 footer{text-align:center;padding:2rem;border-top:1px solid #ffffff;color:#ffffff}
 
 @media(max-width:768px){
-    .age-verification{justify-content:center}
-    .age-card{margin-right:0;padding:40px 30px}
-    .age-question{font-size:26px}
+    /* FIX 1: Image de fond responsive sur mobile */
+    .age-verification{
+        justify-content:center;
+        background-position:center center;
+        background-size:cover;
+        background-attachment:scroll;
+    }
+    
+    .age-card{
+        margin-right:0;
+        padding:35px 25px;
+        max-width:90%;
+    }
+    
+    .age-question{font-size:24px}
+    .age-description{font-size:14px}
     .age-buttons{flex-direction:column}
+    .age-btn{font-size:16px;padding:15px 20px}
+    
+    /* FIX 2: Produits 2 par ligne sur mobile avec espacement à droite */
+    .products{
+        grid-template-columns:repeat(2, 1fr);
+        gap:1rem;
+        padding-right:1.5rem;
+        padding-left:0.5rem;
+    }
+    
+    .card{padding:0.3rem}
+    .card-image img{height:180px}
+    .card-number{font-size:2rem;bottom:10px;right:10px}
+    .card h3{font-size:0.75rem;padding:0 0.5rem}
+    .price{font-size:1.1rem;margin:0.5rem 0;padding:0 0.5rem}
+    .whatsapp{padding:0.5rem 1rem;font-size:0.85rem;gap:0.3rem}
+    
     .nav-menu{position:fixed;top:70px;left:-100%;width:100%;flex-direction:column;background:#0b0a08;padding:2rem;transition:.3s}
     .nav-menu.active{left:0}
     .burger{display:flex}
     .logo{max-width:280px}
-    .card-number{font-size:2.5rem;bottom:15px;right:15px}
+}
+
+/* Ajustement pour très petits écrans */
+@media(max-width:400px){
+    .products{
+        gap:0.8rem;
+    }
+    .card-image img{height:150px}
+    .card h3{font-size:0.7rem}
+    .price{font-size:1rem}
 }
 </style>
 </head>
@@ -145,170 +184,20 @@ footer{text-align:center;padding:2rem;border-top:1px solid #ffffff;color:#ffffff
 <a class="whatsapp" onclick="event.stopPropagation();order('Bolivar Royal Coronas')">💬 To order</a>
 </div>
 
-<div class="card" onclick="order('H Upmann Half Coronas')">
+<div class="card" onclick="order('Rafael Gonzalez Coronas De Lonsdales')">
 <div class="card-image">
-<img src="./H Upmann Half Coronas.png">
+<img src="./Rafael Gonzalez Coronas De Lonsdales.png">
 <span class="card-number">03</span>
 </div>
-<h3>H Upmann Half Coronas</h3>
-<p class="price">100KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('H Upmann Half Coronas')">💬 To order</a>
-</div>
-
-<div class="card" onclick="order('H. Upmann Half Corona pack of 5')">
-<div class="card-image">
-<img src="./H. Upmann Half Corona pack of 5.png">
-<span class="card-number">04</span>
-</div>
-<h3>H. Upmann Half Corona pack of 5</h3>
-<p class="price">105KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('H. Upmann Half Corona pack of 5')">💬 To order</a>
-</div>
-
-<div class="card" onclick="order('Hoyo de Monterrey Epicure No.2')">
-<div class="card-image">
-<img src="./Hoyo de Monterrey Epicure No.2.png">
-<span class="card-number">05</span>
-</div>
-<h3>Hoyo de Monterrey Epicure No.2</h3>
-<p class="price">226KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('Hoyo de Monterrey Epicure No.2')">💬 To order</a>
-</div>
-
-<div class="card" onclick="order('Hoyo de Monterrey Le Hoyo de Rio Seco')">
-<div class="card-image">
-<img src="./Hoyo de Monterrey Le Hoyo de Rio Seco.png">
-<span class="card-number">06</span>
-</div>
-<h3>Hoyo de Monterrey Le Hoyo de Rio Seco</h3>
-<p class="price">136KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('Hoyo de Monterrey Le Hoyo de Rio Seco')">💬 To order</a>
-</div>
-
-<div class="card" onclick="order('HOYO DE MONTERREY MONTERREYES NO. 4 EDICIÓN LIMITADA')">
-<div class="card-image">
-<img src="./HOYO DE MONTERREY MONTERREYES NO. 4 EDICIÓN LIMITADA.png">
-<span class="card-number">07</span>
-</div>
-<h3>HOYO DE MONTERREY MONTERREYES NO. 4</h3>
-<p class="price">317KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('HOYO DE MONTERREY MONTERREYES NO. 4 EDICIÓN LIMITADA')">💬 To order</a>
-</div>
-
-<div class="card" onclick="order('Hoyo de Monterrey Petit Robustos')">
-<div class="card-image">
-<img src="./Hoyo de Monterrey Petit Robustos.png">
-<span class="card-number">08</span>
-</div>
-<h3>Hoyo de Monterrey Petit Robustos</h3>
-<p class="price">192KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('Hoyo de Monterrey Petit Robustos')">💬 To order</a>
-</div>
-
-<div class="card" onclick="order('Juan López Selección No.2')">
-<div class="card-image">
-<img src="./Juan López Selección No.2.png">
-<span class="card-number">09</span>
-</div>
-<h3>Juan López Selección No.2</h3>
-<p class="price">214KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('Juan López Selección No.2')">💬 To order</a>
-</div>
-
-<div class="card" onclick="order('La Flor de Cano Robusto ex. Países Bajos')">
-<div class="card-image">
-<img src="./La Flor de Cano Robusto ex. Países Bajos.png">
-<span class="card-number">10</span>
-</div>
-<h3>La Flor de Cano Robusto ex. Países Bajos</h3>
-<p class="price">149KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('La Flor de Cano Robusto ex. Países Bajos')">💬 To order</a>
-</div>
-
-<div class="card" onclick="order('Montecristo Double Edmundo')">
-<div class="card-image">
-<img src="./Montecristo Double Edmundo.png">
-<span class="card-number">11</span>
-</div>
-<h3>Montecristo Double Edmundo</h3>
-<p class="price">126KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('Montecristo Double Edmundo')">💬 To order</a>
-</div>
-
-<div class="card" onclick="order('Montecristo Especial No.2')">
-<div class="card-image">
-<img src="./Montecristo Especial No.2.png">
-<span class="card-number">12</span>
-</div>
-<h3>Montecristo Especial No.2</h3>
-<p class="price">245KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('Montecristo Especial No.2')">💬 To order</a>
-</div>
-
-<div class="card" onclick="order('Montecristo Media Coronas')">
-<div class="card-image">
-<img src="./Montecristo Media Coronas.png">
-<span class="card-number">13</span>
-</div>
-<h3>Montecristo Media Coronas</h3>
-<p class="price">133KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('Montecristo Media Coronas')">💬 To order</a>
-</div>
-
-<div class="card" onclick="order('Montecristo No. 1')">
-<div class="card-image">
-<img src="./Montecristo No. 1.png">
-<span class="card-number">14</span>
-</div>
-<h3>Montecristo No. 1</h3>
-<p class="price">248KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('Montecristo No. 1')">💬 To order</a>
-</div>
-
-<div class="card" onclick="order('Montecristo No. 2')">
-<div class="card-image">
-<img src="./Montecristo No. 2.png">
-<span class="card-number">15</span>
-</div>
-<h3>Montecristo No. 2</h3>
-<p class="price">327KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('Montecristo No. 2')">💬 To order</a>
-</div>
-
-<div class="card" onclick="order('montecristo no. 4')">
-<div class="card-image">
-<img src="./montecristo no. 4.png">
-<span class="card-number">16</span>
-</div>
-<h3>Montecristo No. 4</h3>
-<p class="price">180KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('montecristo no. 4')">💬 To order</a>
-</div>
-
-<div class="card" onclick="order('Montecristo Petit Edmundo')">
-<div class="card-image">
-<img src="./Montecristo Petit Edmundo.png">
-<span class="card-number">17</span>
-</div>
-<h3>Montecristo Petit Edmundo</h3>
-<p class="price">94KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('Montecristo Petit Edmundo')">💬 To order</a>
-</div>
-
-<div class="card" onclick="order('Partagas Mille Fleurs')">
-<div class="card-image">
-<img src="./Partagas Mille Fleurs.png">
-<span class="card-number">18</span>
-</div>
-<h3>Partagas Mille Fleurs</h3>
-<p class="price">105KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('Partagas Mille Fleurs')">💬 To order</a>
+<h3>Rafael Gonzalez Coronas De Lonsdales</h3>
+<p class="price">72KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Rafael Gonzalez Coronas De Lonsdales')">💬 To order</a>
 </div>
 
 <div class="card" onclick="order('Partagas Serie D No.4')">
 <div class="card-image">
 <img src="./Partagas Serie D No.4.png">
-<span class="card-number">19</span>
+<span class="card-number">04</span>
 </div>
 <h3>Partagas Serie D No.4</h3>
 <p class="price">86KD</p>
@@ -318,81 +207,235 @@ footer{text-align:center;padding:2rem;border-top:1px solid #ffffff;color:#ffffff
 <div class="card" onclick="order('Partagas Serie P No.2')">
 <div class="card-image">
 <img src="./Partagas Serie P No.2.png">
-<span class="card-number">20</span>
+<span class="card-number">05</span>
 </div>
 <h3>Partagas Serie P No.2</h3>
 <p class="price">126KD</p>
 <a class="whatsapp" onclick="event.stopPropagation();order('Partagas Serie P No.2')">💬 To order</a>
 </div>
 
-<div class="card" onclick="order('Por Larranaga Prometidos ex. Francia')">
+<div class="card" onclick="order('Partagas Mille Fleurs')">
 <div class="card-image">
-<img src="./Por Larranaga Prometidos ex. Francia.png">
-<span class="card-number">21</span>
+<img src="./Partagas Mille Fleurs.png">
+<span class="card-number">06</span>
 </div>
-<h3>Por Larranaga Prometidos ex. Francia</h3>
-<p class="price">224KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('Por Larranaga Prometidos ex. Francia')">💬 To order</a>
+<h3>Partagas Mille Fleurs</h3>
+<p class="price">105KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Partagas Mille Fleurs')">💬 To order</a>
 </div>
 
-<div class="card" onclick="order('Protocolo Diplomaticos ex. Rusia')">
+<div class="card" onclick="order('Montecristo Double Edmundo')">
 <div class="card-image">
-<img src="./Protocolo Diplomaticos ex. Rusia.png">
-<span class="card-number">22</span>
+<img src="./Montecristo Double Edmundo.png">
+<span class="card-number">07</span>
 </div>
-<h3>Protocolo Diplomaticos ex. Rusia</h3>
-<p class="price">298KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('Protocolo Diplomaticos ex. Rusia')">💬 To order</a>
+<h3>Montecristo Double Edmundo</h3>
+<p class="price">126KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Montecristo Double Edmundo')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Montecristo Especial No.2')">
+<div class="card-image">
+<img src="./Montecristo Especial No.2.png">
+<span class="card-number">08</span>
+</div>
+<h3>Montecristo Especial No.2</h3>
+<p class="price">245KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Montecristo Especial No.2')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Montecristo Media Coronas')">
+<div class="card-image">
+<img src="./Montecristo Media Coronas.png">
+<span class="card-number">09</span>
+</div>
+<h3>Montecristo Media Coronas</h3>
+<p class="price">133KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Montecristo Media Coronas')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Montecristo No. 2')">
+<div class="card-image">
+<img src="./Montecristo No. 2.png">
+<span class="card-number">10</span>
+</div>
+<h3>Montecristo No. 2</h3>
+<p class="price">327KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Montecristo No. 2')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Montecristo No. 1')">
+<div class="card-image">
+<img src="./Montecristo No. 1.png">
+<span class="card-number">11</span>
+</div>
+<h3>Montecristo No. 1</h3>
+<p class="price">248KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Montecristo No. 1')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('montecristo no. 4')">
+<div class="card-image">
+<img src="./montecristo no. 4.png">
+<span class="card-number">12</span>
+</div>
+<h3>Montecristo No. 4</h3>
+<p class="price">180KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('montecristo no. 4')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Montecristo Petit Edmundo')">
+<div class="card-image">
+<img src="./Montecristo Petit Edmundo.png">
+<span class="card-number">13</span>
+</div>
+<h3>Montecristo Petit Edmundo</h3>
+<p class="price">94KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Montecristo Petit Edmundo')">💬 To order</a>
 </div>
 
 <div class="card" onclick="order('Romeo y Julieta Mille Fleurs')">
 <div class="card-image">
 <img src="./Romeo y Julieta Mille Fleurs.png">
-<span class="card-number">23</span>
+<span class="card-number">14</span>
 </div>
 <h3>Romeo y Julieta Mille Fleurs</h3>
 <p class="price">105KD</p>
 <a class="whatsapp" onclick="event.stopPropagation();order('Romeo y Julieta Mille Fleurs')">💬 To order</a>
 </div>
 
-<div class="card" onclick="order('Quai dOrsay No. 50')">
+<div class="card" onclick="order('Romeo y Julieta Belicosos')">
 <div class="card-image">
-<img src="./Quai d'Orsay No. 50.png">
-<span class="card-number">24</span>
+<img src="./Romeo y Julieta Belicosos.png">
+<span class="card-number">15</span>
 </div>
-<h3>Quai d'Orsay No. 50</h3>
-<p class="price">72KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('Quai dOrsay No. 50')">💬 To order</a>
+<h3>Romeo y Julieta Belicosos</h3>
+<p class="price">269KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Romeo y Julieta Belicosos')">💬 To order</a>
 </div>
 
 <div class="card" onclick="order('R&J Romeo No. 1')">
 <div class="card-image">
 <img src="./R&J Romeo No. 1.png">
-<span class="card-number">25</span>
+<span class="card-number">16</span>
 </div>
 <h3>R&J Romeo No. 1</h3>
 <p class="price">165KD</p>
 <a class="whatsapp" onclick="event.stopPropagation();order('R&J Romeo No. 1')">💬 To order</a>
 </div>
 
+<div class="card" onclick="order('R&J Romeo No. 2 A/T')">
+<div class="card-image">
+<img src="./R&J Romeo No. 2.png">
+<span class="card-number">17</span>
+</div>
+<h3>R&J Romeo No. 2 A/T</h3>
+<p class="price">143KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('R&J Romeo No. 2 A/T')">💬 To order</a>
+</div>
+
 <div class="card" onclick="order('R&J Wide Churchills')">
 <div class="card-image">
 <img src="./R&J Wide Churchills.png">
-<span class="card-number">26</span>
+<span class="card-number">18</span>
 </div>
 <h3>R&J Wide Churchills</h3>
-<p class="price">100KD</p>
+<p class="price">300KD</p>
 <a class="whatsapp" onclick="event.stopPropagation();order('R&J Wide Churchills')">💬 To order</a>
 </div>
 
-<div class="card" onclick="order('Rafael Gonzalez Coronas De Lonsdales')">
+<div class="card" onclick="order('R&J Short Churchills')">
 <div class="card-image">
-<img src="./Rafael Gonzalez Coronas De Lonsdales.png">
+<img src="./r&j short churchills.png">
+<span class="card-number">19</span>
+</div>
+<h3>R&J Short Churchills</h3>
+<p class="price">100KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('R&J Short Churchills')">💬 To order</a>
+</div>
+
+
+
+<div class="card" onclick="order('H Upmann Half Coronas')">
+<div class="card-image">
+<img src="./H Upmann Half Coronas.png">
+<span class="card-number">20</span>
+</div>
+<h3>H Upmann Half Coronas</h3>
+<p class="price">100KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('H Upmann Half Coronas')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('H. Upmann Half Corona pack of 5')">
+<div class="card-image">
+<img src="./H. Upmann Half Corona pack of 5.png">
+<span class="card-number">21</span>
+</div>
+<h3>H. Upmann Half Corona pack of 5</h3>
+<p class="price">105KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('H. Upmann Half Corona pack of 5')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Juan López Selección No.2')">
+<div class="card-image">
+<img src="./Juan López Selección No.2.png">
+<span class="card-number">22</span>
+</div>
+<h3>Juan López Selección No.2</h3>
+<p class="price">214KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Juan López Selección No.2')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Hoyo de Monterrey Epicure No.2')">
+<div class="card-image">
+<img src="./Hoyo de Monterrey Epicure No.2.png">
+<span class="card-number">23</span>
+</div>
+<h3>Hoyo de Monterrey Epicure No.2</h3>
+<p class="price">226KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Hoyo de Monterrey Epicure No.2')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('HOYO DE MONTERREY MONTERREYES NO. 4 EDICIÓN LIMITADA')">
+<div class="card-image">
+<img src="./HOYO DE MONTERREY MONTERREYES NO. 4 EDICIÓN LIMITADA.png">
+<span class="card-number">24</span>
+</div>
+<h3>HOYO DE MONTERREY MONTERREYES NO. 4 EDICIÓN LIMITADA</h3>
+<p class="price">317KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('HOYO DE MONTERREY MONTERREYES NO. 4 EDICIÓN LIMITADA')">💬 To order</a>
+</div>
+
+
+
+<div class="card" onclick="order('Hoyo de Monterrey Le Hoyo de Rio Seco')">
+<div class="card-image">
+<img src="./Hoyo de Monterrey Le Hoyo de Rio Seco.png">
+<span class="card-number">25</span>
+</div>
+<h3>Hoyo de Monterrey Le Hoyo de Rio Seco</h3>
+<p class="price">136KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Hoyo de Monterrey Le Hoyo de Rio Seco')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Hoyo de Monterrey Petit Robustos')">
+<div class="card-image">
+<img src="./Hoyo de Monterrey Petit Robustos.png">
+<span class="card-number">26</span>
+</div>
+<h3>Hoyo de Monterrey Petit Robustos</h3>
+<p class="price">192KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Hoyo de Monterrey Petit Robustos')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Punch Short De Punch')">
+<div class="card-image">
+<img src="./Punch Short De Punch.png">
 <span class="card-number">27</span>
 </div>
-<h3>Rafael Gonzalez Coronas De Lonsdales</h3>
-<p class="price">72KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('Rafael Gonzalez Coronas De Lonsdales')">💬 To order</a>
+<h3>Punch Short De Punch</h3>
+<p class="price">86KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Punch Short De Punch')">💬 To order</a>
 </div>
 
 <div class="card" onclick="order('Ramon Allones Small Club Corona')">
@@ -405,15 +448,56 @@ footer{text-align:center;padding:2rem;border-top:1px solid #ffffff;color:#ffffff
 <a class="whatsapp" onclick="event.stopPropagation();order('Ramon Allones Small Club Corona')">💬 To order</a>
 </div>
 
-<div class="card" onclick="order('Romeo y Julieta Belicosos')">
+<div class="card" onclick="order('Ramon Allones Specially Selected')">
 <div class="card-image">
-<img src="./Romeo y Julieta Belicosos.png">
+<img src="./Ramon Allones Specially Selected.png">
 <span class="card-number">29</span>
 </div>
-<h3>Romeo y Julieta Belicosos</h3>
-<p class="price">269KD</p>
-<a class="whatsapp" onclick="event.stopPropagation();order('Romeo y Julieta Belicosos')">💬 To order</a>
+<h3>Ramon Allones Specially Selected</h3>
+<p class="price">199KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Ramon Allones Specially Selected')">💬 To order</a>
 </div>
+
+<div class="card" onclick="order('Quai dOrsay No. 50')">
+<div class="card-image">
+<img src="./Quai d'Orsay No. 50.png">
+<span class="card-number">30</span>
+</div>
+<h3>Quai d'Orsay No. 50</h3>
+<p class="price">72KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Quai dOrsay No. 50')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('La Flor de Cano Robusto ex. Países Bajos')">
+<div class="card-image">
+<img src="./La Flor de Cano Robusto ex. Países Bajos.png">
+<span class="card-number">31</span>
+</div>
+<h3>La Flor de Cano Robusto ex. Países Bajos</h3>
+<p class="price">149KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('La Flor de Cano Robusto ex. Países Bajos')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Por Larranaga Prometidos ex. Francia')">
+<div class="card-image">
+<img src="./Por Larranaga Prometidos ex. Francia.png">
+<span class="card-number">32</span>
+</div>
+<h3>Por Larranaga Prometidos ex. Francia</h3>
+<p class="price">224KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Por Larranaga Prometidos ex. Francia')">💬 To order</a>
+</div>
+
+<div class="card" onclick="order('Protocolo Diplomaticos ex. Rusia')">
+<div class="card-image">
+<img src="./Protocolo Diplomaticos ex. Rusia.png">
+<span class="card-number">33</span>
+</div>
+<h3>Protocolo Diplomaticos ex. Rusia</h3>
+<p class="price">298KD</p>
+<a class="whatsapp" onclick="event.stopPropagation();order('Protocolo Diplomaticos ex. Rusia')">💬 To order</a>
+</div>
+
 
 </div>
 </div>
@@ -423,7 +507,7 @@ footer{text-align:center;padding:2rem;border-top:1px solid #ffffff;color:#ffffff
 <div class="container">
 <h2 class="section-title">Contact</h2>
 <div class="contact">
-<div class="box">📍 Koweït – Koweït</div>
+<div class="box">📍 Kuwait – Kuwait</div>
 <div class="box">💬 WhatsApp : 96561119777 (24/7)</div>
 </div>
 </div>
@@ -435,13 +519,39 @@ IL COVO © 2025 – Cigar Lounge
 
 </div>
 
+
+
 <script>
 function ageUnder(){window.location.href='https://google.com'}
-function ageOver(){document.getElementById('ageVerification').classList.add('hidden');document.getElementById('mainContent').classList.add('visible')}
-function order(product){const phone="96561119777";const msg=`Hello, I would like to order : ${product}`;window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,"_blank")}
-window.addEventListener("scroll",()=>{document.querySelector(".navbar").classList.toggle("scrolled",window.scrollY>50)});
-document.querySelector(".burger").onclick=()=>{document.querySelector(".nav-menu").classList.toggle("active")};
+
+function ageOver(){
+  document.getElementById('ageVerification').classList.add('hidden');
+  document.getElementById('mainContent').classList.add('visible')
+}
+
+function order(product){
+  const phone = "96561119777";
+
+  // Trouver la carte cliquée
+  const card = event.target.closest(".card");
+  const cardNumber = card.querySelector(".card-number").innerText;
+
+  const msg = `Hello, I would like to order:
+Product: ${product},
+Card number: ${cardNumber}`;
+
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,"_blank");
+}
+
+window.addEventListener("scroll",()=>{
+  document.querySelector(".navbar").classList.toggle("scrolled",window.scrollY>50)
+});
+
+document.querySelector(".burger").onclick=()=>{
+  document.querySelector(".nav-menu").classList.toggle("active")
+};
 </script>
+
 
 </body>
 </html>
